@@ -167,10 +167,9 @@
 
 @media screen and (max-width: 767px) {
   .product-sec {
-    flex-direction: column;
+    display: block;
     margin-top: 20px;
     padding: 0;
-    gap: 20px;
   }
 
   .flex-left {
@@ -188,7 +187,7 @@
   .product-display-mobile {
     display: block;
     width: 100%;
-    height: 40vh;
+    height: 55vh;
   }
 
   .arrows {
@@ -217,9 +216,8 @@
   .flex-right {
     margin-top: 0;
     margin-left: 0;
-    padding: 20px 20px 80px;
+    padding: 25px 20px 80px;
     width: 100%;
-    z-index: -1;
   }
 
   .price-discount {

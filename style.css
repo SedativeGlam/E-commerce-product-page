@@ -97,7 +97,7 @@ body {
   border-radius: 10px;
   position: absolute;
   top: 0;
-  right: 69px;
+  right: 62px;
   display: none;
 }
 
@@ -207,6 +207,7 @@ hr {
 
 .delete-icon {
   width: 10px;
+  cursor: pointer;
 }
 
 .cart-btn {
@@ -266,8 +267,9 @@ hr {
   }
 
   .nav-desktop {
-    padding: 20px 20px 5px;
-    position: sticky;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
     top: 0px;
     background-color: white;
   }
@@ -303,8 +305,6 @@ hr {
   }
 
   .menu-mobile {
-    /*flex-direction: column;
-    align-items: flex-start;*/
     position: fixed;
     top: 0;
     left: 0;
@@ -333,6 +333,11 @@ hr {
   .cart-icon {
     width: 17px;
     margin-right: 15px;
+  }
+
+  .cart-icon-value {
+    top: 6px;
+    right: 47px;
   }
 
   .avatar {

@@ -1,8 +1,4 @@
-
-const cartIcon = document.querySelector(".cart-icon");
-
-
-
+//FOR PRODUCT DISPLAY
 const productDisplay = document.querySelector(".product-display");
 const thumbnails = document.querySelectorAll(".thumbnail");
 const filledThumbnails = document.querySelector(".filled-thumbnail");
@@ -17,12 +13,8 @@ thumbnails.forEach((thumbnail, i) => {
 })
 
 
-const minusIcon = document.querySelector(".minus-icon");
-const productNum = document.querySelector(".product-num");
-const plusIcon = document.querySelector(".plus-icon");
-const addToCart = document.querySelector(".add-to-cart");
-const emptyBasket = document.querySelector(".empty-basket");
 
+//FOR EMPTY-BASKET TIMEOUT
 const handleEmptyBasket = () =>{
   setTimeout(() => {
     emptyBasket.classList.add("empty-fade-out")
@@ -34,6 +26,10 @@ const handleEmptyBasket = () =>{
   }, 3000);
 }
 
+//INCREASE AND DECREASE BUTTONS
+const productNum = document.querySelector(".product-num");
+const minusIcon = document.querySelector(".minus-icon");
+const plusIcon = document.querySelector(".plus-icon");
 
 let quantity = 0;
 let addedToCart = false;
@@ -45,13 +41,10 @@ const handleIncreaseAndDecrease = (type) => {
      quantity--
     }
 
-type === "add" ? quantity++ : quantity--
-
    productNum.textContent = quantity;
    if(addedToCart) {
     cartNumValue.textContent = quantity;
     quantityText.innerHTML = `<p>$125 x ${quantity}  <span>$${quantity * 125}</span></p>`
-   
    }
   
 
@@ -76,6 +69,10 @@ minusIcon.addEventListener("click", () => {
 });
 
 
+//FOR FILLED AND EMPTY BASKETS
+const cartIcon = document.querySelector(".cart-icon")
+const addToCart = document.querySelector(".add-to-cart");
+const emptyBasket = document.querySelector(".empty-basket");
 const cartNumValue = document.querySelector(".cart-icon-value");
 const filledBasket = document.querySelector(".filled-basket");
 const quantityText = document.querySelector(".quantity")
@@ -99,9 +96,7 @@ addToCart.addEventListener("click", () =>{
         
     }
 
-    addedToCart = true
-
-    console.log(emptyBasket);
+    addedToCart = true;
 });
 
 cartIcon.addEventListener("click", ()=>{
@@ -121,6 +116,7 @@ deleteIcon.addEventListener("click", () =>{
   handleEmptyBasket()
 })
 
+//CHECKOUT
 const checkOut = document.querySelector(".check-out");
 const checkOutSuccess = document.querySelector(".checkout-success")
 checkOut.addEventListener("click",()=>{
@@ -137,8 +133,7 @@ setTimeout(() => {
 }, 4000);
 })
 
-
-
+//PRODUCT SLIDES
 const imageUrls = [
   "images/image-product-1.jpg", "images/image-product-2.jpg", "images/image-product-3.jpg", "images/image-product-4.jpg"
 ];
@@ -168,6 +163,7 @@ previousArrow.addEventListener("click", ()=>{
 });
 
 
+//MOBILE MENU
 const container = document.querySelector(".container");
 const iconMenu = document.querySelector(".icon-menu");
 const menu = document.querySelector(".menu-mobile");

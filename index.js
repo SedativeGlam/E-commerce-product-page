@@ -3,7 +3,7 @@ const productDisplay = document.querySelector(".product-display");
 const thumbnails = document.querySelectorAll(".thumbnail");
 const filledThumbnails = document.querySelector(".filled-thumbnail");
 
-let showModal = false;
+//let showModal = false;
 
 thumbnails.forEach((thumbnail, i) => {
   thumbnail.addEventListener("click", (e) => {
@@ -82,22 +82,24 @@ const quantityText = document.querySelector(".quantity");
 
 
 window.addEventListener("click", (event)=>{
-  
-  if (emptyBasket != event.target && showModal) {
-    //emptyBasket.style.display = "none";
-    console.log(showModal);
+  if (event.target !== emptyBasket && event.target !== addToCart && event.target !== deleteIcon && event.target !== minusIcon) {
+    emptyBasket.style.display = "none"
   }
+  console.log(emptyBasket);
+
 });
+
 
 addToCart.addEventListener("click", () => {
   let newQuantity = quantity;
 
   if (newQuantity === 0) {
     emptyBasket.style.display = "block";
-    showModal = true;
+    
+    //showModal = true;
   } else {
     emptyBasket.style.display = "none";
-    showModal = false
+    //showModal = false
   }
 
   
@@ -118,7 +120,7 @@ addToCart.addEventListener("click", () => {
 
 cartIcon.addEventListener("click", () => {
   emptyBasket.style.display = "block";
-  showModal = true;
+  //showModal = true;
 });
 
 const deleteIcon = document.querySelector(".delete-icon");
@@ -128,7 +130,7 @@ deleteIcon.addEventListener("click", () => {
   cartNumValue.style.display = "none";
   emptyBasket.style.display = "block";
   addedToCart = false;
-showModal = true;
+//showModal = true;
 });
 
 //CHECKOUT

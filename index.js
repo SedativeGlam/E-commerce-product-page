@@ -3,8 +3,6 @@ const productDisplay = document.querySelector(".product-display");
 const thumbnails = document.querySelectorAll(".thumbnail");
 const filledThumbnails = document.querySelector(".filled-thumbnail");
 
-//let showModal = false;
-
 thumbnails.forEach((thumbnail, i) => {
   thumbnail.addEventListener("click", (e) => {
     thumbnails.forEach((item) => item.classList.remove("active"));
@@ -13,22 +11,6 @@ thumbnails.forEach((thumbnail, i) => {
     filledThumbnails.src = `/images/image-product-${i + 1}-thumbnail.jpg`;
   });
 });
-
-//FOR EMPTY-BASKET TIMEOUT
-/*const handleEmptyBasket = () => {
-  setTimeout(() => {
-    emptyBasket.classList.add("empty-fade-out");
-  }, 1000);
-
-  setTimeout(() => {
-    emptyBasket.style.display = "none";
-    emptyBasket.classList.remove("empty-fade-out");
-  }, 3000);
-};*/
-
-//HIDING MODAL WHEN ANYWHERE ON THE PAGE IS CLICKED
-
-
 
 //INCREASE AND DECREASE BUTTONS
 const productNum = document.querySelector(".product-num");
@@ -59,7 +41,6 @@ const handleIncreaseAndDecrease = (type) => {
 
     filledBasket.style.display = "none";
     cartNumValue.style.display = "none";
-
   }
 };
 
@@ -71,7 +52,6 @@ minusIcon.addEventListener("click", () => {
   quantity === 0 ? null : handleIncreaseAndDecrease("subtract");
 });
 
-//FOR FILLED AND EMPTY BASKETS
 const cartIcon = document.querySelector(".cart-icon");
 const addToCart = document.querySelector(".add-to-cart");
 const emptyBasket = document.querySelector(".empty-basket");
@@ -79,30 +59,29 @@ const cartNumValue = document.querySelector(".cart-icon-value");
 const filledBasket = document.querySelector(".filled-basket");
 const quantityText = document.querySelector(".quantity");
 
-
-
-window.addEventListener("click", (event)=>{
-  if (event.target !== emptyBasket && event.target !== addToCart && event.target !== deleteIcon && event.target !== minusIcon) {
-    emptyBasket.style.display = "none"
+//HIDING MODAL WHEN ANYWHERE ON THE PAGE IS CLICKED
+window.addEventListener("click", (event) => {
+  if (
+    event.target !== emptyBasket &&
+    event.target !== addToCart &&
+    event.target !== deleteIcon &&
+    event.target !== minusIcon
+  ) {
+    emptyBasket.style.display = "none";
   }
-  console.log(emptyBasket);
-
 });
 
+emptyBasket.addEventListener("click", (event) => event.stopPropagation())
 
+//FOR FILLED AND EMPTY BASKETS
 addToCart.addEventListener("click", () => {
   let newQuantity = quantity;
 
   if (newQuantity === 0) {
     emptyBasket.style.display = "block";
-    
-    //showModal = true;
   } else {
     emptyBasket.style.display = "none";
-    //showModal = false
   }
-
-  
 
   if (newQuantity > 0) {
     cartNumValue.style.display = "block";
@@ -114,13 +93,10 @@ addToCart.addEventListener("click", () => {
   }
 
   addedToCart = true;
-
- 
 });
 
 cartIcon.addEventListener("click", () => {
   emptyBasket.style.display = "block";
-  //showModal = true;
 });
 
 const deleteIcon = document.querySelector(".delete-icon");
@@ -130,7 +106,6 @@ deleteIcon.addEventListener("click", () => {
   cartNumValue.style.display = "none";
   emptyBasket.style.display = "block";
   addedToCart = false;
-//showModal = true;
 });
 
 //CHECKOUT
